@@ -33,3 +33,4 @@ jobs:
         context: .
         push: true
         tags: rupeshmedusa123/medusa-app:latest
+        no cache; true
