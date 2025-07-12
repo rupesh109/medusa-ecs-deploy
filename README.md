@@ -1,62 +1,100 @@
-<p align="center">
-  <a href="https://www.medusajs.com">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/59018053/229103275-b5e482bb-4601-46e6-8142-244f531cebdb.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg">
-    <img alt="Medusa logo" src="https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg">
-    </picture>
-  </a>
-</p>
-<h1 align="center">
-  Medusa
-</h1>
+# 🚀 Medusa Backend Deployment on AWS ECS with Terraform & GitHub Actions
 
-<h4 align="center">
-  <a href="https://docs.medusajs.com">Documentation</a> |
-  <a href="https://www.medusajs.com">Website</a>
-</h4>
+This project demonstrates how to deploy the **Medusa open-source headless commerce platform backend** using **Terraform** on **AWS ECS with Fargate**, and integrates **GitHub Actions** for continuous deployment using Docker.
 
-<p align="center">
-  Building blocks for digital commerce
-</p>
-<p align="center">
-  <a href="https://github.com/medusajs/medusa/blob/master/CONTRIBUTING.md">
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat" alt="PRs welcome!" />
-  </a>
-    <a href="https://www.producthunt.com/posts/medusa"><img src="https://img.shields.io/badge/Product%20Hunt-%231%20Product%20of%20the%20Day-%23DA552E" alt="Product Hunt"></a>
-  <a href="https://discord.gg/xpCwq3Kfn8">
-    <img src="https://img.shields.io/badge/chat-on%20discord-7289DA.svg" alt="Discord Chat" />
-  </a>
-  <a href="https://twitter.com/intent/follow?screen_name=medusajs">
-    <img src="https://img.shields.io/twitter/follow/medusajs.svg?label=Follow%20@medusajs" alt="Follow @medusajs" />
-  </a>
-</p>
+---
 
-## Compatibility
+## 📁 Project Structure
 
-This starter is compatible with versions >= 2 of `@medusajs/medusa`. 
+medusa-ecs-deploy/
+├── medusa-backend/ # Medusa backend project
+│ ├── Dockerfile
+│ └── ...
+├── medusa-ecs-terraform/ # Terraform IaC files
+│ ├── main.tf
+│ ├── variables.tf
+│ ├── outputs.tf
+│ ├── provider.tf
+│ ├── ecs.tf
+│ ├── ecr.tf
+│ └── vpc.tf
+└── .github/
+└── workflows/
+└── docker-build.yml # GitHub Actions CI/CD
 
-## Getting Started
+---
 
-Visit the [Quickstart Guide](https://docs.medusajs.com/learn/installation) to set up a server.
+## ⚙️ Features
 
-Visit the [Docs](https://docs.medusajs.com/learn/installation#get-started) to learn more about our system requirements.
+- 🌐 Deploys Medusa backend on **AWS ECS (Fargate)**
+- 🐳 Docker-based deployment using **ECR**
+- 🔄 **CI/CD pipeline** with GitHub Actions
+- 🛠️ **Infrastructure as Code** using Terraform
+- ☁️ AWS services: ECS, ECR, VPC, Subnets, Security Groups
 
-## What is Medusa
+---
 
-Medusa is a set of commerce modules and tools that allow you to build rich, reliable, and performant commerce applications without reinventing core commerce logic. The modules can be customized and used to build advanced ecommerce stores, marketplaces, or any product that needs foundational commerce primitives. All modules are open-source and freely available on npm.
+## 🧰 Prerequisites
 
-Learn more about [Medusa’s architecture](https://docs.medusajs.com/learn/introduction/architecture) and [commerce modules](https://docs.medusajs.com/learn/fundamentals/modules/commerce-modules) in the Docs.
+- ✅ AWS Account (Free Tier)
+- ✅ GitHub account
+- ✅ Docker installed and Docker Hub account
+- ✅ Terraform v1.8.5+ installed
+- ✅ AWS CLI configured:
+  ```bash
+  aws configure
+🚀 Setup Instructions
+🔹 1. Clone this Repository
+bash
+Copy
+Edit
+git clone https://github.com/<your-username>/medusa-ecs-deploy.git
+cd medusa-ecs-deploy
 
-## Community & Contributions
+🔹2. Build Docker Image (Optional)
+bash
+Copy
+Edit
+cd medusa-backend
+docker build -t <your-dockerhub-username>/medusa-app:latest .
+docker push <your-dockerhub-username>/medusa-app:latest
 
-The community and core team are available in [GitHub Discussions](https://github.com/medusajs/medusa/discussions), where you can ask for support, discuss roadmap, and share ideas.
+🔹 3. Add GitHub Actions Secrets
+Go to your GitHub repo → Settings → Secrets and Variables → Actions → New Repository Secret:
 
-Join our [Discord server](https://discord.com/invite/medusajs) to meet other community members.
+DOCKER_USERNAME: Your Docker Hub username
 
-## Other channels
+DOCKER_PASSWORD: Your Docker Hub password or token
+🔹 4. CI/CD via GitHub Actions
+On every push to the main branch, the GitHub Action:
 
-- [GitHub Issues](https://github.com/medusajs/medusa/issues)
-- [Twitter](https://twitter.com/medusajs)
-- [LinkedIn](https://www.linkedin.com/company/medusajs)
-- [Medusa Blog](https://medusajs.com/blog/)
+Builds Docker image
+
+Pushes to Docker Hub
+
+File: .github/workflows/docker-build.yml
+
+🏗️ Deploy Infrastructure with Terraform
+✅ Run:
+bash
+Copy
+Edit
+cd medusa-ecs-terraform
+terraform init
+terraform apply
+Confirm with yes when prompted
+
+✅ Creates:
+
+ECS Cluster & Service
+
+ECR Repository
+
+VPC, Subnets, Security Groups
+
+Launches Medusa container
+
+👤 Author
+Rupesh Kumar Jha
+🔗 https://www.linkedin.com/in/rupesh-kumar-jha-b04b2119b/
+🐙 https://github.com/rupesh109
