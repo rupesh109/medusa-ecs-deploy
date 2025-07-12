@@ -75,6 +75,7 @@ Pushes to Docker Hub
 File: .github/workflows/docker-build.yml
 
 🏗️ Deploy Infrastructure with Terraform
+
 ✅ Run:
 bash
 Copy
@@ -83,6 +84,7 @@ cd medusa-ecs-terraform
 terraform init
 terraform apply
 Confirm with yes when prompted
+
 
 ✅ Creates:
 
