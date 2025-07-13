@@ -49,14 +49,15 @@ bash
 Copy
 Edit
 git clone https://github.com/<your-username>/medusa-ecs-deploy.git
+
 cd medusa-ecs-deploy
 
 🔹2. Build Docker Image (Optional)
-bash
-Copy
-Edit
+
 cd medusa-backend
+
 docker build -t <your-dockerhub-username>/medusa-app:latest .
+
 docker push <your-dockerhub-username>/medusa-app:latest
 
 🔹 3. Add GitHub Actions Secrets
@@ -65,6 +66,7 @@ Go to your GitHub repo → Settings → Secrets and Variables → Actions → Ne
 DOCKER_USERNAME: Your Docker Hub username
 
 DOCKER_PASSWORD: Your Docker Hub password or token
+
 🔹 4. CI/CD via GitHub Actions
 On every push to the main branch, the GitHub Action:
 
