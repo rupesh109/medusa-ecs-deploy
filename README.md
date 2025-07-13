@@ -44,6 +44,7 @@ medusa-ecs-deploy/
   ```bash
   aws configure
 🚀 Setup Instructions
+
 🔹 1. Clone this Repository
 bash
 Copy
@@ -79,9 +80,7 @@ File: .github/workflows/docker-build.yml
 🏗️ Deploy Infrastructure with Terraform
 
 ✅ Run:
-bash
-Copy
-Edit
+
 cd medusa-ecs-terraform
 terraform init
 terraform apply
